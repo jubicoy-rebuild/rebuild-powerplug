@@ -5,8 +5,8 @@
 Develop environment to use remote controlled powerplugs with C.H.I.P. Find a way to use them with C.H.I.P and build some practical applications which 
 C.H.I.P can then control. 
 
-After the environment is setup you can develop API for using the application over network. Then you can easily integrate the system to any software.
-If you have time you can build controller application using the API, such as Android application.
+As you build the environment you can setup an API for using the applications through C.H.I.P. There is another project that works with controller software
+that uses your API. Make a good documentation for the API and work closely with this another group.
 
 Focus on:
 - Good documentation for users setting up similar environment and for using the API
