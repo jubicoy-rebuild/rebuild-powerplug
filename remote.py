@@ -6,21 +6,22 @@ import CHIP_IO.GPIO as GPIO
 import time
 
 GPIO.cleanup()
-PIN1 = "XIO-P2"
-PIN2 = "XIO-P3"
-PIN3 = "XIO-P4"
-PIN4 = "XIO-P5"
-PIN5 = "XIO-P6"
-PIN6 = "XIO-P7"
 
-GPIO.setup(PIN1, GPIO.OUT)
-GPIO.setup(PIN2, GPIO.OUT)
-GPIO.setup(PIN3, GPIO.OUT)
-GPIO.setup(PIN4, GPIO.OUT)
-GPIO.setup(PIN5, GPIO.OUT)
-GPIO.setup(PIN6, GPIO.OUT)
+pins = ["XIO-P2","XIO-P3","XIO-P4","XIO-P5","XIO-P6","XIO-P7"]
 
-#print "Toggling XIO-P2 10 times..."
+
+for pin in pins:
+	GPIO.setup(pin, GPIO.OUT)
+	GPIO.output(pin, GPIO.HIGH)
+	
+
+PIN1 = pins[0]
+PIN2 = pins[1]
+PIN3 = pins[2]
+PIN4 = pins[3]
+PIN5 = pins[4]
+PIN6 = pins[5]
+
 
 #for i in range(0,10):
 #        GPIO.output(PIN, GPIO.LOW)
@@ -34,9 +35,9 @@ PORT_NUMBER = 80
 
 
 def togglePin(pin):
-	GPIO.output(pin, GPIO.HIGH)
-	time.sleep(1)
 	GPIO.output(pin, GPIO.LOW)
+	time.sleep(1)
+	GPIO.output(pin, GPIO.HIGH)
 
 
 
@@ -44,6 +45,7 @@ def togglePin(pin):
 #the browser 
 class myHandler(BaseHTTPRequestHandler):
 	
+
 	#Handler for the GET requests
 	def do_GET(self):
 		if self.path=="/":
@@ -53,10 +55,10 @@ class myHandler(BaseHTTPRequestHandler):
 			#self.path="/index_example2.html"
 			togglePin(PIN1)
 
-			GPIO.output(PIN1, GPIO.HIGH)
-			time.sleep(0.1)
-			GPIO.output(PIN, GPIO.LOW)
-			time.sleep(0.1)
+#			GPIO.output(PIN1, GPIO.HIGH)
+#			time.sleep(0.1)
+#			GPIO.output(PIN1, GPIO.LOW)
+#			time.sleep(0.1)
 
 		if self.path=="/1off":
 			togglePin(PIN2)
