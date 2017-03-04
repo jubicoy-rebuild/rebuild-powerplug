@@ -9,9 +9,16 @@ GPIO.cleanup()
 PIN1 = "XIO-P2"
 PIN2 = "XIO-P3"
 PIN3 = "XIO-P4"
+PIN4 = "XIO-P5"
+PIN5 = "XIO-P6"
+PIN6 = "XIO-P7"
+
 GPIO.setup(PIN1, GPIO.OUT)
 GPIO.setup(PIN2, GPIO.OUT)
 GPIO.setup(PIN3, GPIO.OUT)
+GPIO.setup(PIN4, GPIO.OUT)
+GPIO.setup(PIN5, GPIO.OUT)
+GPIO.setup(PIN6, GPIO.OUT)
 
 #print "Toggling XIO-P2 10 times..."
 
@@ -25,6 +32,14 @@ GPIO.setup(PIN3, GPIO.OUT)
 
 PORT_NUMBER = 80
 
+
+def togglePin(pin):
+	GPIO.output(pin, GPIO.HIGH)
+	time.sleep(1)
+	GPIO.output(pin, GPIO.LOW)
+
+
+
 #This class will handles any incoming request from
 #the browser 
 class myHandler(BaseHTTPRequestHandler):
@@ -36,32 +51,48 @@ class myHandler(BaseHTTPRequestHandler):
 
 		if self.path=="/1on":
 			#self.path="/index_example2.html"
-#			GPIO.output(PIN, GPIO.LOW)
-#			time.sleep(0.1)
+			togglePin(PIN1)
+
 			GPIO.output(PIN1, GPIO.HIGH)
+			time.sleep(0.1)
+			GPIO.output(PIN, GPIO.LOW)
 			time.sleep(0.1)
 
 		if self.path=="/1off":
-			GPIO.output(PIN1, GPIO.LOW)
-			time.sleep(0.1)
+			togglePin(PIN2)
+
+#			GPIO.output(PIN1, GPIO.LOW)
+#			time.sleep(0.1)
 
 
 		if self.path=="/2on":
-			GPIO.output(PIN2, GPIO.HIGH)
-			time.sleep(0.1)
+			togglePin(PIN3)
+
+#			GPIO.output(PIN2, GPIO.HIGH)
+#			time.sleep(0.1)
 
 		if self.path=="/2off":
-			GPIO.output(PIN2, GPIO.LOW)
-			time.sleep(0.1)
+
+			togglePin(PIN4)
+
+#			GPIO.output(PIN2, GPIO.LOW)
+#			time.sleep(0.1)
 
 
 		if self.path=="/3on":
-			GPIO.output(PIN3, GPIO.HIGH)
-			time.sleep(0.1)
+
+			togglePin(PIN5)
+
+#			GPIO.output(PIN3, GPIO.HIGH)
+#			time.sleep(0.1)
 
 		if self.path=="/3off":
-			GPIO.output(PIN3, GPIO.LOW)
-			time.sleep(0.1)
+
+
+			togglePin(PIN6)
+
+#			GPIO.output(PIN3, GPIO.LOW)
+#			time.sleep(0.1)
 
 
 
